@@ -1,0 +1,3 @@
+The 'axi' directory contains an undocumented and uncommented version of the TLM-AXI bridge and the AXI4-LITE master for the SystemC ("high-level") simulation.
+These source files need to be reviewed, properly commented and documented.
+Current version of these source files is unknown due to the lack of documentation.

@@ -1,0 +1,90 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DBGC_ADDRESS	./dbg_console.h	13;"	d
+DBGC_DEBUG_LEVEL	./dbg_console.h	36;"	d
+DBGC_DTMODE	./dbg_console.h	31;"	d
+DBGC_ERROR_LEVEL	./dbg_console.h	33;"	d
+DBGC_HALT	./dbg_console.h	30;"	d
+DBGC_INFO_LEVEL	./dbg_console.h	35;"	d
+DBGC_PUT_CHAR	./dbg_console.h	15;"	d
+DBGC_PUT_DEC_INT16	./dbg_console.h	19;"	d
+DBGC_PUT_DEC_INT32	./dbg_console.h	22;"	d
+DBGC_PUT_DEC_INT8	./dbg_console.h	16;"	d
+DBGC_PUT_DEC_UINT16	./dbg_console.h	20;"	d
+DBGC_PUT_DEC_UINT32	./dbg_console.h	23;"	d
+DBGC_PUT_DEC_UINT8	./dbg_console.h	17;"	d
+DBGC_PUT_HEX_UINT16	./dbg_console.h	21;"	d
+DBGC_PUT_HEX_UINT32	./dbg_console.h	24;"	d
+DBGC_PUT_HEX_UINT8	./dbg_console.h	18;"	d
+DBGC_STR_GET_ADDR	./dbg_console.h	27;"	d
+DBGC_STR_GET_SIZE	./dbg_console.h	28;"	d
+DBGC_STR_PUT_ADDR	./dbg_console.h	26;"	d
+DBGC_WARNING_LEVEL	./dbg_console.h	34;"	d
+DBG_CONSOLE_H	./dbg_console.h	7;"	d
+FIQ_MASK	./isrsupport.c	21;"	d	file:
+INT_MASK	./isrsupport.c	22;"	d	file:
+IPIN_OFFSET	./app.h	14;"	d
+IPIN_SIZE	./app.h	17;"	d
+IPOUT_OFFSET	./app.h	15;"	d
+IPOUT_SIZE	./app.h	18;"	d
+IRQ_MASK	./isrsupport.c	20;"	d	file:
+Iflag	./app.c	/^int Iflag = 1; \/\/ Interruption flag$/;"	v
+PRINT	./dbg_console.h	61;"	d
+RFILE	./app.c	/^uint8_t *RFILE = (uint8_t *)SYS_RFILE_RAM_BASE; \/\/ Example of a file for reading in text mode$/;"	v
+RFILE_SIZE	./app.h	10;"	d
+RWNUM	./app.c	/^uint32_t *RWNUM = (uint32_t *)SYS_RWNUM_RAM_BASE; \/\/ Example of a file for r\/w$/;"	v
+SYS_AXI_BASE	./mmap.h	63;"	d
+SYS_AXI_SIZE	./mmap.h	64;"	d
+SYS_CONS_BASE	./mmap.h	31;"	d
+SYS_CONS_SIZE	./mmap.h	32;"	d
+SYS_IRQC_BASE	./mmap.h	23;"	d
+SYS_IRQC_SIZE	./mmap.h	24;"	d
+SYS_MEM32	./mmap.h	67;"	d
+SYS_MEM_BASE	./mmap.h	15;"	d
+SYS_MEM_SIZE	./mmap.h	16;"	d
+SYS_RFILE_RAM_BASE	./mmap.h	43;"	d
+SYS_RFILE_RAM_SIZE	./mmap.h	44;"	d
+SYS_RWNUM_RAM_BASE	./mmap.h	51;"	d
+SYS_RWNUM_RAM_SIZE	./mmap.h	52;"	d
+SYS_WFILE_RAM_BASE	./mmap.h	47;"	d
+SYS_WFILE_RAM_SIZE	./mmap.h	48;"	d
+WFILE	./app.c	/^uint8_t *WFILE = (uint8_t *)SYS_WFILE_RAM_BASE; \/\/ Example of a file for writing in text mode$/;"	v
+WFILE_SIZE	./app.h	11;"	d
+__get_cpsr	./isrsupport.c	/^static inline unsigned __get_cpsr(void)$/;"	f	file:
+__set_cpsr	./isrsupport.c	/^static inline void __set_cpsr(unsigned val)$/;"	f	file:
+_cstartup	./startup.s	/^_cstartup:$/;"	l
+_reset	./startup.s	/^_reset:$/;"	l
+_start	./startup.s	/^_start:$/;"	l
+check_status	./start.c	/^void check_status() {$/;"	f
+disableFIQ	./isrsupport.c	/^unsigned disableFIQ(void)$/;"	f
+disableIRQ	./isrsupport.c	/^unsigned disableIRQ(void)$/;"	f
+enableFIQ	./isrsupport.c	/^unsigned enableFIQ(void)$/;"	f
+enableIRQ	./isrsupport.c	/^unsigned enableIRQ(void)$/;"	f
+halt	./app.c	27;"	d	file:
+halt	./start.c	8;"	d	file:
+handle_interrupt	./app.c	/^void handle_interrupt(void)$/;"	f
+irq_dis	./irq.s	/^irq_dis:$/;"	l
+irq_ena	./irq.s	/^irq_ena:$/;"	l
+irq_handler	./irq.s	/^irq_handler:$/;"	l
+low_level_init	./low_level_init.c	/^void low_level_init(void (*reset_addr)(), void (*return_addr)()) {$/;"	f
+main	./app.c	/^int main()$/;"	f
+print_char	./dbg_console.h	38;"	d
+print_hex_string	./dbg_console.c	/^void print_hex_string(uint8_t *s, size_t len)$/;"	f
+print_hex_uint	./dbg_console.h	41;"	d
+print_int	./dbg_console.h	39;"	d
+print_reg	./dbg_console.h	43;"	d
+print_str	./dbg_console.h	51;"	d
+print_str_nodmi	./dbg_console.c	/^void print_str_nodmi(const char *s) {$/;"	f
+print_uint	./dbg_console.h	40;"	d
+read_str	./dbg_console.h	52;"	d
+restoreFIQ	./isrsupport.c	/^unsigned restoreFIQ(unsigned oldCPSR)$/;"	f
+restoreIRQ	./isrsupport.c	/^unsigned restoreIRQ(unsigned oldCPSR)$/;"	f
+set_debug_level	./dbg_console.h	59;"	d
+set_dtmode	./dbg_console.h	54;"	d
+set_error_level	./dbg_console.h	56;"	d
+set_info_level	./dbg_console.h	58;"	d
+set_warning_level	./dbg_console.h	57;"	d

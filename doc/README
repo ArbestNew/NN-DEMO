@@ -1,0 +1,151 @@
+*******************************************************************
+*    SystemC complete SoC system simulation framework template    *
+*                                                                 *
+* Embedded software application codes are executed on the ISS     *
+* SimSoC. Peripherals are connected through a TLM bus with an AXI *
+* bridge (so they can be connected trough TLM or AXI interfaces). *
+* This template includes processor's RAM, a IRQ controller, a     *
+* console, two example files directly connected and mapped into   *
+* the TLM bus and a example dummy IP with an AXI slave interface. *
+*                                                                 *
+* Version 1.0:                                                    *
+*   Author: unknown                                               *
+*   Date: unknown                                                 *
+*                                                                 *
+* Version 2.0:                                                    *
+*   Author: David Aledo                                           *
+*   Date: 18/01/2019                                              *
+*                                                                 *
+*******************************************************************
+
+*** Step 0: Customize your system: ***
+--------------------------------------
+(if you want to simulate the dummy example jump to Step 1)
+
+You can find more documentation on the 'doc' directory.
+
+You may need to edit config.tcl to add your IP files on the configuration of the Vivado HLS project.
+Likely, you won't need to modify the other files on the root project directory.
+They are scripts which works with whatever files are on the directories or with specific files which you should preserve their names.
+
+
+To edit or write your embedded software application go to the 'sw' directory.
+You should NOT edit the following files (most of them are for the ISS):
+-dbg_console.[c,h]
+-dump.sh
+-irq.s
+-isrsupport.[c,h]
+-low_level_init.c
+-start.c
+-startup.s
+
+You may edit the following files and create new ones:
+-app.c -> It defines the main function and a interrupt handler function.
+-app.h -> It defines parameters for the application.
+-app.ld -> Only to adjust the sizes of the stacks used by the application. DO NOT edit anything else!
+-Makefile[.macosx] -> Only to add new libraries, tags and compiler/linker options. DO NOT edit anything else!
+-mmap.h -> Memory map of the system. It defines the BASE address and SIZE of the modules connected to the TLM bus. You can add the BASE address and SIZE of your peripherals and/or modify the example peripherals, but you should NOT modify the default system peripherals (viz. processor's RAM, interrupt controller and console)
+
+
+To edit or create your synthesizable IP go to the 'synth' directory.
+You can find there the folloging files:
+-AXISlave.[cpp,h] -> It is an AXI little slave interface. You may only need to change the name of your IP and its include preprocessor statement.
+-ip.[c,h] -> It is an IP template/wrapper that connects with the AXI little slave interface. You can use it as a wrapper of your IP (to connect with the AXI little slave interface) or as a template for your IP.
+You can add as many synthesizable SystemC files as you need.
+
+
+To edit the testbench files of the system simulation go to the 'tb' directory.
+You should NOT edit the following files and subdirectories (most of them are for the ISS):
+-axi
+-Makefile[.macosx]
+-mask_tensor.mem
+-run.sh
+-tb_init.[cpp,h]
+-tbsrc
+-tbsrc.vhd
+-utils.h
+
+You may edit the following files and create new ones:
+-rfile.txt -> It is an example file for reading that can be mapped directly in the memory map (i.e. connected to the TLM bus). You can delete it if you don't need.
+-wfile.out -> It is an example file for writing that can be mapped directly in the memory map (i.e. connected to the TLM bus). You can delete it if you don't need.
+-top.cpp -> It defines the SystemC simulation main function and top modules. You should edit ONLY the marked editable sections.
+You can add as many text files for reading and/or writing directly from/to the TLM bus.
+
+
+*** Step 1: Run the SystemC simulation (at TLM): ***
+----------------------------------------------------
+
+It is advisable to start "cleaning" the project directories from garbage files.
+To do that, execute the 'clean.sh' script:
+sh clean.sh
+
+First, you need to compile the embedded software application.
+Go to the 'sw' directory.
+To get access to the ARM compiler on et4351 execute the following command:
+source /opt/eds/Xilinx/Vivado/2017.2/settings64.csh
+Note: you can choose a newer version of Vivado if it is available.
+
+Now you should be able to 'make' the software in the 'sw' directory (execute 'make').
+After that, the 'app.elf' file is ready.
+
+Thereafter go to the 'tb' directory and execute 'make' to compile the simulation.
+Then execute the virtual machine by the following command:
+./sctop ../sw/app.elf
+
+If you want to view the signal traces, you can use 'gtkwave'. Execute:
+gtkwave tr.vcd
+
+
+*** Step 2: Run HLS: ***
+------------------------
+
+To the run HLS go back to the root directory of the project and execute the 'run_hls.sh' script:
+sh run_hls.sh
+Note: as it may require a long time, you can execute the HLS in background (sh run_hls.sh &). 
+
+The VLSIProject directory is created and filled with the Vivado HLS project.
+
+
+*** Step 3: Run the RTL simulation in SystemC: ***
+--------------------------------------------------
+
+TODO: ...
+
+
+*** Step 4: Run the RTL simulation in VHDL: ***
+-----------------------------------------------
+
+First, you need to copy the VHDL testbench ('tbsrc.vhd') generated on the SystemC simulation (at TLM) in the 'tb' directory to the 'sim' directory. You can use the GUI or use the cp command, up to you!
+
+Then, go to the 'sim' directory and execute the 'msim-axis.sh' script.
+It will create the 'work' directory and it will fill it with the AXI bus and AXI master files for the simulation.
+
+Then, execute the 'msim-syn.sh' script.
+It will fill the 'work' directory with files for the simulation of your IP.
+
+Finally, execute the 'msim-axis.do' script to start the ModelSIM simulation.
+sh msim-axis.do
+
+
+*** Step 5: Run the system in an FPGA: ***
+------------------------------------------
+
+TODO...
+NOTE: This is an unfinished flow
+
+First, go to the 'fpga' directory and execute the 'copyfiles.sh' script. It will copy the VHDL files generated by the HLS for implementation into the 'ipxact' directory.
+
+Then, go to the 'ipxact' directory and execute the 'run.sh' script. It creates a Vivado project for the IP and packages it.
+
+NOTE: until here, everything looks OK (except for the SimSoC memory map)
+
+Next, go to the 'design' directory and execute 'run.sh' and 'sdk.sh' scripts.
+Note: using and olvd Vivado version in 'set_property compxlib.modelsim_compiled_library_dir /opt/eds/modeltech/10.1f/vivado2016'
+Note: the file 'cell_top_axi.xdc' only contains comments. It is used in:
+add_files -fileset constrs_1 -norecurse ./cell_top_axi.xdc
+import_files -fileset constrs_1 ./cell_top_axi.xdc
+
+NOTE: remove xgui and subcore??? Do not remove subcore, it is empty but create_ipxact gives an error if it does not exist. xgui was generated, so it can be removed
+
+
+

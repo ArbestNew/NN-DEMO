@@ -1,0 +1,8 @@
+This directory (scvp) contains the template structure to start your own project.
+The following subdirectories are present.
+
+- tb 	: contains the toplevel soc description and testbench files tu run behavioral simulations.
+- synth	: contains the SystemC source to be synthesized with a HLS tool (e.g. Vivado_HLS, Catapult ...)
+- sw	: contains the C source of an application that will run on the embedded processor.
+- sim	: contains subdirectories 'sysc' and 'vhdl' with scripts to run rtl simulations
+- doc	: contains documentation files. 
