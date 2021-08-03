@@ -1,4 +1,4 @@
-# code version: 0
+# code version: DEMO
 git pull
 sh clean.sh
 
