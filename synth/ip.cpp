@@ -134,7 +134,7 @@ void myip::write_cthread()
                     // Dummy example that simply copy inputs into outputs:
                     for(int i=0; i<IPIN_SIZE; i++)
                     {
-                        outbuff[i] = inbuff[i];
+                        outbuff[i] = inbuff[IPIN_SIZE - i - 1];
                     }
                     wait(); // Update computed values and forces interrupt_request assertion to become after
 
